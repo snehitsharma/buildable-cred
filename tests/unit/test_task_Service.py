@@ -9,7 +9,7 @@ def test_create_task():
     task = task_service.create_task(TaskCreate(title="buy milk", description="2%"))
     assert task.id == 1
     assert task.title == "buy milk"
-    assert task.done is False
+    assert task.completed is False
 
 def test_get_task_not_found():
     assert task_service.get_task(999) is None
