@@ -1,0 +1,7 @@
+services:
+  api:
+    build: .
+    image: 168876035018.dkr.ecr.us-east-1.amazonaws.com/buildable-cred:latest
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
