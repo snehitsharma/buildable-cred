@@ -40,8 +40,8 @@ jobs:
         run: |
           echo "${{ secrets.EC2_SSH_KEY }}" > key.pem
           chmod 600 key.pem
-          scp -o StrictHostKeyChecking=no -i key.pem docker-compose.yml ubuntu@${{ secrets.EC2_HOST }}:~/docker-compose.yml
-          ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@${{ secrets.EC2_HOST }} << 'EOF'
+          scp -o StrictHostKeyChecking=no -i key.pem docker-compose.yml ubuntu@${{ secrets.EC2_HOST_KEY }}:~/docker-compose.yml
+          ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@${{ secrets.EC2_HOST_KEY }} << 'EOF'
             aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 168876035018.dkr.ecr.us-east-1.amazonaws.com
             docker compose pull
             docker compose up -d
